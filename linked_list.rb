@@ -53,7 +53,16 @@ class LinkedList
     tmp = tmp.next until tmp.next.next.nil?
     tmp.next = nil 
   end
-
+  
+  def contains?(value)
+    return if head.nil?
+    tmp = head
+    until tmp.nil?
+      return true if tmp.value == value
+      tmp = tmp.next
+    end
+    false
+  end
 
   def to_s
     unless head.nil?
@@ -86,15 +95,18 @@ linked_list.prepend(90)
 linked_list.append(140)
 linked_list.prepend(900)
 linked_list.to_s
-linked_list.pop
-linked_list.to_s
-linked_list.pop
-linked_list.to_s
-linked_list.pop
-linked_list.to_s
-linked_list.append(130)
-linked_list.append(140)
-linked_list.to_s
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
