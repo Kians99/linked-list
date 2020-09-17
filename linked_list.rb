@@ -80,12 +80,13 @@ class LinkedList
   def insert_at(value, index)
     return nil if index >= self.size
     prepend(value) if index == 0
+    append(value) if index == self.size - 1
     idx = 0
     tmp = head
     until tmp.nil?
       if idx + 1 == index
-        tmp.next = Node.new(value, tmp)
-        return
+        tmp.next = Node.new(value, tmp.next)
+        return value
       else
         tmp = tmp.next
         idx += 1
@@ -125,8 +126,10 @@ linked_list.append(140)
 linked_list.prepend(900)
 linked_list.to_s
 
-linked_list.insert_at(99, 0)
+linked_list.insert_at(700, 7)
 linked_list.to_s
+
+
 
 
 
