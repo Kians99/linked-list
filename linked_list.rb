@@ -47,6 +47,14 @@ class LinkedList
     tmp
   end
 
+  def pop
+    return if head.nil?
+    tmp = head
+    tmp = tmp.next until tmp.next.next.nil?
+    tmp.next = nil 
+  end
+
+
   def to_s
     unless head.nil?
       puts ''
@@ -78,19 +86,20 @@ linked_list.prepend(90)
 linked_list.append(140)
 linked_list.prepend(900)
 linked_list.to_s
-node1 = linked_list.at(0)
-p node1
-node4 = linked_list.at(3)
-p node4
-node7 = linked_list.at(6)
-p node7
-node9 = linked_list.at(8)
-p node9
-node11 = linked_list.at(10)
-p node11
-node50 = linked_list.at(49)
-p node50
- 
+linked_list.pop
+linked_list.to_s
+linked_list.pop
+linked_list.to_s
+linked_list.pop
+linked_list.to_s
+linked_list.append(130)
+linked_list.append(140)
+linked_list.to_s
+
+
+
+
+
 
 
 
