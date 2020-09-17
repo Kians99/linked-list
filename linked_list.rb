@@ -9,7 +9,7 @@ class LinkedList
   end
 
   def append(value)
-    return self.head = Node.new(value, nil) if head.nil?
+    return self.head = Node.new(value, nil) if self.head.nil?
     
     tmp = head
     tmp = tmp.next until tmp.next.nil?
@@ -78,9 +78,9 @@ class LinkedList
   end
 
   def insert_at(value, index)
+    return if head.nil?
     return nil if index >= self.size
-    prepend(value) if index == 0
-    append(value) if index == self.size - 1
+    return prepend(value) if index == 0
     idx = 0
     tmp = head
     until tmp.nil?
@@ -94,10 +94,34 @@ class LinkedList
     end
   end
 
+  def remove_at(index)
+    return if self.head.nil?
+    return nil if index >= self.size
+    if index == 0
+      unless self.head.next.nil?
+        self.head = self.head.next
+        return
+      end
+      return nil
+    end
+    return self.pop if index == self.size - 1
+    idx = 0
+    tmp = self.head
+    until tmp.nil?
+      if idx + 1 == index
+        tmp.next = tmp.next.next
+        return index
+      else
+        tmp = tmp.next
+        idx += 1
+      end
+    end
+  end
+
   def to_s
-    unless head.nil?
+    unless self.head.nil?
       puts ''
-      tmp = head
+      tmp = self.head
       until tmp.nil?
         print "|#{tmp.value}| --> "
         tmp = tmp.next
@@ -110,24 +134,6 @@ class LinkedList
   end
   
 end
-
-
-#tests
-
-linked_list = LinkedList.new
-linked_list.append(10)
-linked_list.append(11)
-linked_list.append(12)
-linked_list.append(13)
-linked_list.append(14)
-linked_list.prepend(450)
-linked_list.prepend(90)
-linked_list.append(140)
-linked_list.prepend(900)
-linked_list.to_s
-
-linked_list.insert_at(700, 7)
-linked_list.to_s
 
 
 
