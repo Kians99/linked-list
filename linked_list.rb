@@ -16,6 +16,12 @@ class LinkedList
     tmp.next = Node.new(value, nil)
   end
 
+  def prepend(value)
+    return self.head = Node.new(value, nil) if head.nil?
+
+    self.head = Node.new(value, head)
+  end
+
   def to_s
     unless head.nil?
       puts ''
@@ -42,8 +48,12 @@ linked_list.append(11)
 linked_list.append(12)
 linked_list.append(13)
 linked_list.append(14)
-linked_list.append(15)
-linked_list.append(16)
+linked_list.prepend(450)
+linked_list.prepend(90)
+linked_list.append(140)
+linked_list.prepend(900)
+
+
 linked_list.to_s
 
 
