@@ -22,6 +22,16 @@ class LinkedList
     self.head = Node.new(value, head)
   end
 
+  def size
+    tmp = head
+    total = 0
+    until tmp.nil?
+      total += 1
+      tmp = tmp.next
+    end
+    total
+  end
+
   def to_s
     unless head.nil?
       puts ''
@@ -52,9 +62,8 @@ linked_list.prepend(450)
 linked_list.prepend(90)
 linked_list.append(140)
 linked_list.prepend(900)
-
-
 linked_list.to_s
+puts linked_list.size
 
 
 
