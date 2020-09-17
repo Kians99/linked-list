@@ -64,6 +64,35 @@ class LinkedList
     false
   end
 
+  def find(value)
+    return if head.nil?
+    idx = 0
+    tmp = head
+    until tmp.nil?
+      return idx if tmp.value == value
+
+      tmp = tmp.next
+      idx += 1
+    end
+    nil
+  end
+
+  def insert_at(value, index)
+    return nil if index >= self.size
+    prepend(value) if index == 0
+    idx = 0
+    tmp = head
+    until tmp.nil?
+      if idx + 1 == index
+        tmp.next = Node.new(value, tmp)
+        return
+      else
+        tmp = tmp.next
+        idx += 1
+      end
+    end
+  end
+
   def to_s
     unless head.nil?
       puts ''
@@ -95,6 +124,16 @@ linked_list.prepend(90)
 linked_list.append(140)
 linked_list.prepend(900)
 linked_list.to_s
+
+linked_list.insert_at(99, 0)
+linked_list.to_s
+
+
+
+
+
+
+
 
 
 
