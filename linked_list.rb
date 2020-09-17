@@ -32,6 +32,21 @@ class LinkedList
     total
   end
 
+  def tail
+    return if head.nil?
+    tmp = head
+    tmp = tmp.next until tmp.next.nil?
+    tmp 
+  end
+
+  def at(index)
+    return puts "No node at that index!" if index >= self.size
+
+    tmp = head
+    index.times { tmp = tmp.next }
+    tmp
+  end
+
   def to_s
     unless head.nil?
       puts ''
@@ -63,7 +78,22 @@ linked_list.prepend(90)
 linked_list.append(140)
 linked_list.prepend(900)
 linked_list.to_s
-puts linked_list.size
+node1 = linked_list.at(0)
+p node1
+node4 = linked_list.at(3)
+p node4
+node7 = linked_list.at(6)
+p node7
+node9 = linked_list.at(8)
+p node9
+node11 = linked_list.at(10)
+p node11
+node50 = linked_list.at(49)
+p node50
+ 
+
+
+
 
 
 
